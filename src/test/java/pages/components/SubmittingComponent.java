@@ -3,6 +3,7 @@ package pages.components;
 import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.SelenideElement;
 
+import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
@@ -14,6 +15,7 @@ public class SubmittingComponent {
                                   contentForm = $(".table-responsive");
 
     public SubmittingComponent checkForm() {
+        modalContent.should(appear);
         modalContent.shouldHave(text(HEADER));
 
         return this;

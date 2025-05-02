@@ -9,39 +9,31 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PracticeFormTest {
-
-    @BeforeAll
-    static void setBrowserConfig() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.baseUrl = "https://demoqa.com";
-        Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
-    }
+public class PracticeFormTest extends TestBase {
 
     @Test
     void fillFormTest() {
-//        open("/automation-practice-form");
-//        executeJavaScript("$('#fixedban').remove()");
-//        executeJavaScript("$('footer').remove()");
-//        $("#firstName").setValue("Raccoon");
-//        $("#lastName").setValue("Qa");
-//        $("#userEmail").setValue("test@test.com");
-//        $("#genterWrapper").$(byText("Female")).click();
-//        $("#userNumber").setValue("1234567890");
-//        $("#dateOfBirthInput").click();
+        open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
+        $("#firstName").setValue("Raccoon");
+        $("#lastName").setValue("Qa");
+        $("#userEmail").setValue("test@test.com");
+        $("#genterWrapper").$(byText("Female")).click();
+        $("#userNumber").setValue("1234567890");
+        $("#dateOfBirthInput").click();
         $(".react-datepicker").shouldBe(visible);
-//        $(".react-datepicker__month-select").selectOption("May");
-//        $(".react-datepicker__year-select").selectOption("2000");
-//        $(".react-datepicker__day--010").click();
-//        $("#subjectsInput").setValue("Maths").pressEnter();
-//        $("#hobbiesWrapper").$(byText("Sports")).click();
-//        $("#hobbiesWrapper").$(byText("Music")).click();
-//        $("#uploadPicture").uploadFromClasspath("mem_1.jpg");
-//        $("#currentAddress").setValue("Current Address");
-//        $("#react-select-3-input").setValue("NCR").pressEnter();
-//        $("#react-select-4-input").setValue("Delhi").pressEnter();
-//        $("#submit").click();
+        $(".react-datepicker__month-select").selectOption("May");
+        $(".react-datepicker__year-select").selectOption("2000");
+        $(".react-datepicker__day--010").click();
+        $("#subjectsInput").setValue("Maths").pressEnter();
+        $("#hobbiesWrapper").$(byText("Sports")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
+        $("#uploadPicture").uploadFromClasspath("mem_1.jpg");
+        $("#currentAddress").setValue("Current Address");
+        $("#react-select-3-input").setValue("NCR").pressEnter();
+        $("#react-select-4-input").setValue("Delhi").pressEnter();
+        $("#submit").click();
 
 
         $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));

@@ -107,7 +107,7 @@ public class PracticeFormPage {
         return this;
     }
 
-    public void submit(String value) {
+    public void submit() {
         submitButton.click();
 
     }
