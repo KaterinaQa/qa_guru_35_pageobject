@@ -21,6 +21,12 @@ public class SubmittingComponent {
         return this;
     }
 
+    public SubmittingComponent absenceForm() {
+        modalContent.shouldNotBe(appear);
+
+        return this;
+    }
+
     public SubmittingComponent checkContentForm(String key, String value) {
         contentForm.$(byText(key)).parent().shouldHave(text(value));
 

@@ -1,5 +1,6 @@
 package tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.PracticeFormPage;
 import pages.components.SubmittingComponent;
@@ -12,6 +13,7 @@ public class PracticeFormPageObjectTest extends TestBase {
     String firstName = "Raccoon",
            lastName = "QA",
            userEmail = "test@test.com",
+           gender = "Female",
            mobilePhone = "1234567890",
            dayOfBirth = "10",
            monthOfBirth = "May",
@@ -26,10 +28,10 @@ public class PracticeFormPageObjectTest extends TestBase {
 
 
     @Test
-    void successfulFillForm () {
+    @DisplayName("Проверка успешного заполнения всех полей формы")
+    void successfulFillForm() {
         practiceFormPage.openPage();
 
-        String gender = "Female";
         practiceFormPage
                 .setFirstName(firstName)
                 .setLastName(lastName)
@@ -58,5 +60,39 @@ public class PracticeFormPageObjectTest extends TestBase {
                 .checkContentForm("Picture", avatar)
                 .checkContentForm("Address", address)
                 .checkContentForm("State and City", state + " " + city);
+    }
+
+    @Test
+    @DisplayName("Проверка успешного заполнения обязательных полей формы")
+    void requiredFillForm() {
+        practiceFormPage.openPage();
+
+        practiceFormPage
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setGender(gender)
+                .setMobilePhone(mobilePhone)
+                .submit();
+
+        submittingComponent
+                .checkForm()
+                .checkContentForm("Student Name", firstName + " " + lastName)
+                .checkContentForm("Gender", gender)
+                .checkContentForm("Mobile", mobilePhone);
+    }
+
+    @Test
+    @DisplayName("Валидация заполнения обязательных полей")
+    void validationFillForm() {
+        practiceFormPage.openPage();
+
+        practiceFormPage
+                .setFirstName(firstName)
+                .setLastName(lastName)
+                .setMobilePhone(mobilePhone)
+                .submit();
+
+        submittingComponent
+                .absenceForm();
     }
 }
